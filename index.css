@@ -1,0 +1,38 @@
+body {
+    background-image: linear-gradient(lightblue, ivory);
+    /* background-color: grey; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+}
+
+h1 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 48;
+    padding-bottom: ;
+}
+
+hr {
+    background-color: black;
+    height: 1px;
+    width: 100%;
+    border: black solid 1px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    border: black solid 1px;
+}
+
+button {
+    color: white;
+    background-color: navy;
+}
+
+
+
+

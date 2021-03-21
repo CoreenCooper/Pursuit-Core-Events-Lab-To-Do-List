@@ -6,22 +6,29 @@ const p = document.querySelector("p");
 const toDolist = (event) => {
     event.preventDefault();
     const userInput = document.querySelector("textarea"); // why does this have to be inside the function?
-    const li = document.createElement("li");
-    const btn = document.createElement("button");
-    btn.type = "submit"
+    const splitMulti = userInput.value.split("\n")
+    
     if (userInput.value === "") {
         p.textContent = "please enter string" 
     } else {
         p.textContent = "";
-        li.textContent = userInput.value;
-        ul.appendChild(li);
-        btn.textContent = "delete";
-        li.appendChild(btn);
-        userInput.value = "";
+        for (const el of splitMulti) {
+            if (el !== "") {
+                const li = document.createElement("li");
+                const btn = document.createElement("button");
+                btn.type = "submit"
+                li.textContent = el;
+                btn.textContent = "delete";
+                ul.appendChild(li);
+                li.appendChild(btn);    
+                btn.addEventListener("click", (event) => {
+                    event.path[1].parentNode.removeChild(event.path[1]) // remove()
+                    debugger
+                })
+            }
+            userInput.value = "";
+        }
     }
-    btn.addEventListener("click", (event) => {
-        event.path[1].parentNode.removeChild(event.path[1])
-    })
 }
 
 const strikeOut = (event) => {

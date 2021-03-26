@@ -21,11 +21,18 @@ const addItems = (e) => {
   userInput.value = "";
 };
 
-// cross out when user clicks list item remove cross out upon second click
+// strike out list item when user clicks
+// remove strike out upon second click
+// delete list item when button is clicked
 const strikeOut = (e) => {
   const item = e.target;
-  item.style.textDecoration =
-    item.style.textDecoration === "line-through" ? "none" : "line-through";
+
+  if (item.tagName === "BUTTON") {
+    item.parentElement.remove();
+  } else {
+    item.style.textDecoration =
+      item.style.textDecoration === "line-through" ? "none" : "line-through";
+  }
 };
 
 list.addEventListener("click", strikeOut);

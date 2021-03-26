@@ -1,19 +1,18 @@
-// When the user writes something in the `form`'s text input area and clicks `submit`,
-// the `ul` should update with a new `li` item at the bottom of the list. The page **should not refresh**.
-
-//     1. Add an event listener to the form with `.addEventListener`. What event do you want to listen for?
-//     2. Remember, what does `event.preventDefault()` do?
-//     3. Grab the value the user typed from the text input. Do you remember what property of the input node has this?
-//     4. Create new `li` element with `document.createElement()`. Set its `textContent` property to be the text the user typed.
-//     5. Don't forget to append the created `li` to the list.
-
+// display valid user input in a list or error message
 const addItems = (e) => {
   e.preventDefault();
+  const errMessage = document.querySelector("p");
   const userInput = document.querySelector("#user-input");
   const list = document.querySelector("ul");
   const listItem = document.createElement("li");
-  listItem.textContent = userInput.value;
-  list.appendChild(listItem);
+
+  if (userInput.value === "") {
+    errMessage.textContent = "invalid entry";
+  } else {
+    errMessage.textContent = "";
+    listItem.textContent = userInput.value;
+    list.appendChild(listItem);
+  }
 };
 
 const form = document.querySelector("form");

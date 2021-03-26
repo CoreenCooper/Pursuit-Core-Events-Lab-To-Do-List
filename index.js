@@ -1,9 +1,10 @@
-// display valid user input in a list or error message
+// display valid user input in a list or error message and reset input field
+const list = document.querySelector("ul");
+
 const addItems = (e) => {
   e.preventDefault();
   const errMessage = document.querySelector("p");
   const userInput = document.querySelector("#user-input");
-  const list = document.querySelector("ul");
   const listItem = document.createElement("li");
 
   if (userInput.value === "") {
@@ -15,6 +16,13 @@ const addItems = (e) => {
   }
   userInput.value = "";
 };
+
+const strikeOut = (e) => {
+    const item = e.target;
+    item.style.textDecoration = item.style.textDecoration === "line-through" ? "none" : "line-through";
+}
+
+list.addEventListener("click", strikeOut);
 
 const form = document.querySelector("form");
 form.addEventListener("submit", addItems);

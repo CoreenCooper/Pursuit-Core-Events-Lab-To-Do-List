@@ -5,22 +5,28 @@ const addItems = (e) => {
   e.preventDefault();
   const errMessage = document.querySelector("p");
   const userInput = document.querySelector("#user-input");
-  const listItem = document.createElement("li");
 
   if (userInput.value === "") {
-    errMessage.textContent = "invalid entry";
+    errMessage.textContent = "ERROR! Todo cannot be empty";
   } else {
     errMessage.textContent = "";
+    const listItem = document.createElement("li");
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "x";
     listItem.textContent = userInput.value;
     list.appendChild(listItem);
+    listItem.appendChild(deleteBtn);
   }
+
   userInput.value = "";
 };
 
+// cross out when user clicks list item remove cross out upon second click
 const strikeOut = (e) => {
-    const item = e.target;
-    item.style.textDecoration = item.style.textDecoration === "line-through" ? "none" : "line-through";
-}
+  const item = e.target;
+  item.style.textDecoration =
+    item.style.textDecoration === "line-through" ? "none" : "line-through";
+};
 
 list.addEventListener("click", strikeOut);
 

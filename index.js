@@ -13,6 +13,7 @@ const addItems = (e) => {
     listItem.textContent = userInput.value;
     list.appendChild(listItem);
   }
+  userInput.value = "";
 };
 
 const form = document.querySelector("form");

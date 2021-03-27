@@ -5,9 +5,19 @@ const addItems = (e) => {
   e.preventDefault();
   const errMessage = document.querySelector("p");
   const userInput = document.querySelector("#user-input");
-
   if (userInput.value === "") {
     errMessage.textContent = "ERROR! Todo cannot be empty";
+  } else if (userInput.value.includes("\n")) {
+    errMessage.textContent = "";
+    const inputArr = userInput.value.split("\n");
+    inputArr.forEach((word) => {
+      const listItem = document.createElement("li");
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "x";
+      listItem.textContent = word;
+      list.appendChild(listItem);
+      listItem.appendChild(deleteBtn);
+    });
   } else {
     errMessage.textContent = "";
     const listItem = document.createElement("li");

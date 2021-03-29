@@ -1,33 +1,32 @@
 // display valid user input in a list or error message and reset input field
 const list = document.querySelector("ul");
 
+const singleInput = (word) => {
+  const listItem = document.createElement("li");
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "x";
+  listItem.textContent = word;
+  list.appendChild(listItem);
+  listItem.appendChild(deleteBtn);
+  debugger;
+};
+
 const addItems = (e) => {
   e.preventDefault();
-  const errMessage = document.querySelector("p");
   const userInput = document.querySelector("#user-input");
+  const errMessage = document.querySelector("p");
   if (userInput.value === "") {
     errMessage.textContent = "ERROR! Todo cannot be empty";
   } else if (userInput.value.includes("\n")) {
     errMessage.textContent = "";
     const inputArr = userInput.value.split("\n");
     inputArr.forEach((word) => {
-      const listItem = document.createElement("li");
-      const deleteBtn = document.createElement("button");
-      deleteBtn.textContent = "x";
-      listItem.textContent = word;
-      list.appendChild(listItem);
-      listItem.appendChild(deleteBtn);
+      singleInput(word);
     });
   } else {
     errMessage.textContent = "";
-    const listItem = document.createElement("li");
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "x";
-    listItem.textContent = userInput.value;
-    list.appendChild(listItem);
-    listItem.appendChild(deleteBtn);
+    singleInput(userInput.value);
   }
-
   userInput.value = "";
 };
 
